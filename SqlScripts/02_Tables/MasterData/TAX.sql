@@ -1,0 +1,9 @@
+CREATE TABLE Tax (
+    TaxID INT NOT NULL,
+    TaxName NVARCHAR(100) NOT NULL,
+    Rate DECIMAL(5,2) NOT NULL,
+    EffectiveFrom DATE NOT NULL,
+    EffectiveTo DATE NULL,
+    IsMandatory BIT NOT NULL DEFAULT 1,
+    CONSTRAINT PK_Tax PRIMARY KEY (TaxID)
+);

@@ -1,0 +1,11 @@
+CREATE TABLE TaxCalc (
+    TaxCalcID INT NOT NULL,
+    SalaryCalcID INT NOT NULL,
+    CalcDate DATE NOT NULL,
+    TaxID INT NOT NULL,
+    AppliedRate DECIMAL(5,4) NOT NULL,
+    TaxValue DECIMAL(10,2) NOT NULL,
+    CONSTRAINT PK_TaxCalc PRIMARY KEY (TaxCalcID),
+    CONSTRAINT FK_TaxCalc_Salary FOREIGN KEY (SalaryCalcID) REFERENCES SalaryCalc(SalaryCalcID),
+    CONSTRAINT FK_TaxCalc_Tax FOREIGN KEY (TaxID) REFERENCES Tax(TaxID)
+);
