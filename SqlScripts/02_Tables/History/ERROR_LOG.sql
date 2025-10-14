@@ -1,4 +1,4 @@
-CREATE TABLE ErrorLog (
+п»їCREATE TABLE ErrorLog (
     ErrorID INT PRIMARY KEY IDENTITY(1,1),
     ProcedureName NVARCHAR(100),
     ErrorMessage NVARCHAR(MAX),
@@ -7,12 +7,12 @@ CREATE TABLE ErrorLog (
     ErrorState INT,
     CreatedAt DATETIME DEFAULT GETDATE(),
 
-    -- Системные поля
+    -- РЎРёСЃС‚РµРјРЅС‹Рµ РїРѕР»СЏ
     HostName NVARCHAR(100),
     AppName NVARCHAR(100),
     ClientIP NVARCHAR(50),
 
-    -- Привязка к пользователю
+    -- РџСЂРёРІСЏР·РєР° Рє РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
     EmployeeId  INT NOT NULL,
     FOREIGN KEY (EmployeeId ) REFERENCES Employee(EmployeeId )
 );

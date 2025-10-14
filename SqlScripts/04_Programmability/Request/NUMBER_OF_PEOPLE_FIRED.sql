@@ -1,4 +1,4 @@
-DECLARE @TargetDate DATE = '2025-09-30';
+﻿DECLARE @TargetDate DATE = '2025-09-30';
 
 SELECT COUNT(*) AS DismissedCount
 FROM Employee

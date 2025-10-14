@@ -1,4 +1,4 @@
-CREATE TABLE EmployeePostHist (
+﻿CREATE TABLE EmployeePostHist (
     EmployeePostHistID INT NOT NULL IDENTITY(1,1),
     EmployeeID INT NOT NULL,
     AssignedFrom DATE NOT NULL,

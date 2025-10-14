@@ -1,11 +1,11 @@
-CREATE PROCEDURE CalculateSalaryByDepartment
+п»їCREATE PROCEDURE CalculateSalaryByDepartment
     @CalcMonth DATE,
     @DepartmentID INT
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Собираем всех сотрудников из иерархии департаментов
+    -- РЎРѕР±РёСЂР°РµРј РІСЃРµС… СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ РёР· РёРµСЂР°СЂС…РёРё РґРµРїР°СЂС‚Р°РјРµРЅС‚РѕРІ
     WITH DepartmentTree AS (
         SELECT DepartmentID FROM Department WHERE DepartmentID = @DepartmentID
         UNION ALL

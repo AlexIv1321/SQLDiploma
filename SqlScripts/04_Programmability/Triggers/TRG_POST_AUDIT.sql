@@ -1,4 +1,4 @@
-CREATE TRIGGER trg_Post_Audit
+п»їCREATE TRIGGER trg_Post_Audit
 ON Post
 AFTER INSERT, UPDATE, DELETE
 AS
@@ -48,17 +48,17 @@ BEGIN
         JOIN deleted d ON i.PostID = d.PostID;
     END
 
-    -- Формирование сообщения
+    -- Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ
     IF @Action = 'INSERT'
-        SET @msg = CONCAT(N'Добавлена должность "', @Title, '" в департаменте ', @DeptIDNew);
+        SET @msg = CONCAT(N'Р”РѕР±Р°РІР»РµРЅР° РґРѕР»Р¶РЅРѕСЃС‚СЊ "', @Title, '" РІ РґРµРїР°СЂС‚Р°РјРµРЅС‚Рµ ', @DeptIDNew);
     ELSE IF @Action = 'DELETE'
-        SET @msg = CONCAT(N'Удалена должность "', @Title, '" из департамента ', @DeptIDOld);
+        SET @msg = CONCAT(N'РЈРґР°Р»РµРЅР° РґРѕР»Р¶РЅРѕСЃС‚СЊ "', @Title, '" РёР· РґРµРїР°СЂС‚Р°РјРµРЅС‚Р° ', @DeptIDOld);
     ELSE IF @Action = 'UPDATE'
-        SET @msg = CONCAT(N'Обновлена должность "', @Title,
-                          '". Старый департамент: ', @DeptIDOld,
-                          ', новый департамент: ', @DeptIDNew);
+        SET @msg = CONCAT(N'РћР±РЅРѕРІР»РµРЅР° РґРѕР»Р¶РЅРѕСЃС‚СЊ "', @Title,
+                          '". РЎС‚Р°СЂС‹Р№ РґРµРїР°СЂС‚Р°РјРµРЅС‚: ', @DeptIDOld,
+                          ', РЅРѕРІС‹Р№ РґРµРїР°СЂС‚Р°РјРµРЅС‚: ', @DeptIDNew);
 
-    -- Единый вызов логирования
+    -- Р•РґРёРЅС‹Р№ РІС‹Р·РѕРІ Р»РѕРіРёСЂРѕРІР°РЅРёСЏ
     IF @Action IS NOT NULL
         EXEC LogAudit @EntityName, @EntityID, @Action, @msg;
 END;

@@ -1,4 +1,4 @@
-CREATE PROCEDURE CalculateTaxesForSalary
+п»їCREATE PROCEDURE CalculateTaxesForSalary
     @SalaryCalcID INT,
     @CalcDate DATE,
     @GrossSalary DECIMAL(10,2)
@@ -33,7 +33,7 @@ BEGIN
     CLOSE TaxCursor;
     DEALLOCATE TaxCursor;
 
-    -- Обновляем сумму налогов
+    -- РћР±РЅРѕРІР»СЏРµРј СЃСѓРјРјСѓ РЅР°Р»РѕРіРѕРІ
     UPDATE SalaryCalc
     SET TaxAmount = (
         SELECT SUM(TaxValue)

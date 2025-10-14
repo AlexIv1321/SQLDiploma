@@ -1,4 +1,4 @@
-CREATE PROCEDURE ChangePostSalary
+п»їCREATE PROCEDURE ChangePostSalary
     @PostID INT,
     @NewSalary DECIMAL(18,2),
     @EffectiveFrom DATE,
@@ -13,7 +13,7 @@ BEGIN
         IF NOT EXISTS (
             SELECT 1 FROM Post WHERE PostID = @PostID AND IsActive = 1
         )
-            THROW 80001, N'Должность не найдена или неактивна.', 1;
+            THROW 80001, N'Р”РѕР»Р¶РЅРѕСЃС‚СЊ РЅРµ РЅР°Р№РґРµРЅР° РёР»Рё РЅРµР°РєС‚РёРІРЅР°.', 1;
 
         UPDATE SalaryHistory
         SET EffectiveTo = DATEADD(DAY, -1, @EffectiveFrom)

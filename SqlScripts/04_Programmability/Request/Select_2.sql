@@ -1,13 +1,13 @@
-DECLARE @CalcMonth DATE = '2025-09-01';
+п»їDECLARE @CalcMonth DATE = '2025-09-01';
 
 SELECT 
-    d.Name AS [Назва підрозділу],
-    SUM(sc.GrossSalary) AS [Сума нарахованої заробітної плати],
+    d.Name AS [РќР°Р·РІР° РїС–РґСЂРѕР·РґС–Р»Сѓ],
+    SUM(sc.GrossSalary) AS [РЎСѓРјР° РЅР°СЂР°С…РѕРІР°РЅРѕС— Р·Р°СЂРѕР±С–С‚РЅРѕС— РїР»Р°С‚Рё],
 
-    -- Податки як окремі стовпчики
-    SUM(CASE WHEN tc.TaxID = 1 THEN tc.TaxValue ELSE 0 END) AS [ПДФО],
-    SUM(CASE WHEN tc.TaxID = 2 THEN tc.TaxValue ELSE 0 END) AS [Військовий збір],
-    SUM(CASE WHEN tc.TaxID = 3 THEN tc.TaxValue ELSE 0 END) AS [ЄСВ]
+    -- РџРѕРґР°С‚РєРё СЏРє РѕРєСЂРµРјС– СЃС‚РѕРІРїС‡РёРєРё
+    SUM(CASE WHEN tc.TaxID = 1 THEN tc.TaxValue ELSE 0 END) AS [РџР”Р¤Рћ],
+    SUM(CASE WHEN tc.TaxID = 2 THEN tc.TaxValue ELSE 0 END) AS [Р’С–Р№СЃСЊРєРѕРІРёР№ Р·Р±С–СЂ],
+    SUM(CASE WHEN tc.TaxID = 3 THEN tc.TaxValue ELSE 0 END) AS [Р„РЎР’]
 
 FROM SalaryCalc sc
 JOIN Employee e ON sc.EmployeeID = e.EmployeeID

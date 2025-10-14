@@ -1,4 +1,4 @@
-CREATE TABLE DepartmentLog (
+﻿CREATE TABLE DepartmentLog (
     LogID INT PRIMARY KEY IDENTITY(1,1),
     DepartmentID INT NULL,
     Action NVARCHAR(50) NOT NULL,

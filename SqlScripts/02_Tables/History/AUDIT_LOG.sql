@@ -1,4 +1,4 @@
-CREATE TABLE AuditLog (
+﻿CREATE TABLE AuditLog (
     AuditLogID INT NOT NULL IDENTITY(1,1),
     EntityName NVARCHAR(100) NOT NULL,      
     EntityID INT NULL,                      
