@@ -15,5 +15,3 @@
     CONSTRAINT UQ_Post_Post_EffectiveFrom UNIQUE (PostID, EffectiveFrom)
 
 );
-
-CREATE NONCLUSTERED INDEX IX_SalaryHistory_Post_EffectiveFrom ON SalaryHistory(PostID, EffectiveFrom);

@@ -9,5 +9,3 @@
     CONSTRAINT PK_ID PRIMARY KEY (SalaryCalcID),
     CONSTRAINT FK_SalaryCalc_Employee FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID)
 );
-
-CREATE NONCLUSTERED INDEX IX_SalaryCalc_Employee_CalcDate ON SalaryCalc (EmployeeID, CalcDate);

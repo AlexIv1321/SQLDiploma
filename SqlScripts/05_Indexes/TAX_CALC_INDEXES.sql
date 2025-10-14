@@ -1,0 +1,1 @@
+﻿CREATE NONCLUSTERED INDEX IX_TaxCalc_SalaryCalcID_CalcDate ON TaxCalc (SalaryCalcID, CalcDate);

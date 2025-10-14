@@ -1,0 +1,1 @@
+﻿CREATE NONCLUSTERED INDEX IX_SalaryHistory_Post_EffectiveFrom ON SalaryHistory(PostID, EffectiveFrom);
