@@ -1,4 +1,4 @@
-CREATE PROCEDURE LogError
+﻿CREATE PROCEDURE LogError
     @ProcedureName NVARCHAR(100),
     @EmployeeID INT
 AS

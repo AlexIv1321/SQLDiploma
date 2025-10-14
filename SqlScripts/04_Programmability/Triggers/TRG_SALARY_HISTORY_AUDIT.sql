@@ -1,4 +1,4 @@
-CREATE TRIGGER trg_SalaryHistory_Audit
+п»їCREATE TRIGGER trg_SalaryHistory_Audit
 ON SalaryHistory
 AFTER INSERT, UPDATE, DELETE
 AS
@@ -52,22 +52,22 @@ BEGIN
         JOIN deleted d ON i.SalaryHistoryID = d.SalaryHistoryID;
     END
 
-    -- Формирование сообщения
+    -- Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ
     IF @Action = 'INSERT'
-        SET @msg = CONCAT(N'Добавлена зарплата ', @SalaryNew,
-                          ' для должности ', @PostID,
-                          ' с ', @EffectiveFrom);
+        SET @msg = CONCAT(N'Р”РѕР±Р°РІР»РµРЅР° Р·Р°СЂРїР»Р°С‚Р° ', @SalaryNew,
+                          ' РґР»СЏ РґРѕР»Р¶РЅРѕСЃС‚Рё ', @PostID,
+                          ' СЃ ', @EffectiveFrom);
     ELSE IF @Action = 'DELETE'
-        SET @msg = CONCAT(N'Удалена зарплата ', @SalaryOld,
-                          ' для должности ', @PostID,
-                          ' с ', @EffectiveFrom);
+        SET @msg = CONCAT(N'РЈРґР°Р»РµРЅР° Р·Р°СЂРїР»Р°С‚Р° ', @SalaryOld,
+                          ' РґР»СЏ РґРѕР»Р¶РЅРѕСЃС‚Рё ', @PostID,
+                          ' СЃ ', @EffectiveFrom);
     ELSE IF @Action = 'UPDATE'
-        SET @msg = CONCAT(N'Обновлена зарплата для должности ', @PostID,
-                          '. Старая: ', @SalaryOld,
-                          ', новая: ', @SalaryNew,
-                          '. С ', @EffectiveFrom);
+        SET @msg = CONCAT(N'РћР±РЅРѕРІР»РµРЅР° Р·Р°СЂРїР»Р°С‚Р° РґР»СЏ РґРѕР»Р¶РЅРѕСЃС‚Рё ', @PostID,
+                          '. РЎС‚Р°СЂР°СЏ: ', @SalaryOld,
+                          ', РЅРѕРІР°СЏ: ', @SalaryNew,
+                          '. РЎ ', @EffectiveFrom);
 
-    -- Единый вызов логирования
+    -- Р•РґРёРЅС‹Р№ РІС‹Р·РѕРІ Р»РѕРіРёСЂРѕРІР°РЅРёСЏ
     IF @Action IS NOT NULL
         EXEC LogAudit @EntityName, @EntityID, @Action, @msg;
 END;

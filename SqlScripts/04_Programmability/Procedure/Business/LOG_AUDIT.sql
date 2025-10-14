@@ -1,4 +1,4 @@
-CREATE PROCEDURE LogAudit
+﻿CREATE PROCEDURE LogAudit
     @EntityName NVARCHAR(100),
     @EntityID INT,
     @Action NVARCHAR(20),

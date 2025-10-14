@@ -1,4 +1,4 @@
-CREATE TRIGGER trg_Department_Audit
+п»їCREATE TRIGGER trg_Department_Audit
 ON Department
 AFTER INSERT, UPDATE, DELETE
 AS
@@ -47,13 +47,13 @@ BEGIN
     END
 
     IF @Action = 'INSERT'
-        SET @msg = CONCAT(N'Добавлен департамент "', @Name, '" с кодом "', @Code, '"');
+        SET @msg = CONCAT(N'Р”РѕР±Р°РІР»РµРЅ РґРµРїР°СЂС‚Р°РјРµРЅС‚ "', @Name, '" СЃ РєРѕРґРѕРј "', @Code, '"');
     ELSE IF @Action = 'DELETE'
-        SET @msg = CONCAT(N'Удалён департамент "', @Name, '" с кодом "', @Code, '"');
+        SET @msg = CONCAT(N'РЈРґР°Р»С‘РЅ РґРµРїР°СЂС‚Р°РјРµРЅС‚ "', @Name, '" СЃ РєРѕРґРѕРј "', @Code, '"');
     ELSE IF @Action = 'UPDATE'
-        SET @msg = CONCAT(N'Обновлён департамент "', @Name,
-                          '". Старый код: "', @CodeOld,
-                          '", новый код: "', @CodeNew, '"');
+        SET @msg = CONCAT(N'РћР±РЅРѕРІР»С‘РЅ РґРµРїР°СЂС‚Р°РјРµРЅС‚ "', @Name,
+                          '". РЎС‚Р°СЂС‹Р№ РєРѕРґ: "', @CodeOld,
+                          '", РЅРѕРІС‹Р№ РєРѕРґ: "', @CodeNew, '"');
 
     IF @Action IS NOT NULL
         EXEC LogAudit @EntityName, @EntityID, @Action, @msg;

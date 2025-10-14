@@ -1,4 +1,4 @@
-DECLARE @StartDate DATE = '2025-01-01';
+﻿DECLARE @StartDate DATE = '2025-01-01';
 DECLARE @EndDate DATE = '2025-09-30';
 
 WITH DepartmentTree AS (

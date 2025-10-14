@@ -1,15 +1,15 @@
-DECLARE @StartDate DATE = '2025-07-01';
+п»їDECLARE @StartDate DATE = '2025-07-01';
 DECLARE @EndDate DATE = '2025-09-30';
 
 SELECT 
-    e.FullName AS [Найменування працівника],
-    p.Title AS [Посада],
-    d.Name AS [Департамент],
-    sc.CalcDate AS [Дата розрахунку],
-    sc.BaseSalary AS [Оклад],
-    sc.GrossSalary AS [Нарахована сума],
-    sc.TaxAmount AS [Сума податків],
-    ROUND(sc.GrossSalary - sc.TaxAmount, 2) AS [Сума після утримання]
+    e.FullName AS [РќР°Р№РјРµРЅСѓРІР°РЅРЅСЏ РїСЂР°С†С–РІРЅРёРєР°],
+    p.Title AS [РџРѕСЃР°РґР°],
+    d.Name AS [Р”РµРїР°СЂС‚Р°РјРµРЅС‚],
+    sc.CalcDate AS [Р”Р°С‚Р° СЂРѕР·СЂР°С…СѓРЅРєСѓ],
+    sc.BaseSalary AS [РћРєР»Р°Рґ],
+    sc.GrossSalary AS [РќР°СЂР°С…РѕРІР°РЅР° СЃСѓРјР°],
+    sc.TaxAmount AS [РЎСѓРјР° РїРѕРґР°С‚РєС–РІ],
+    ROUND(sc.GrossSalary - sc.TaxAmount, 2) AS [РЎСѓРјР° РїС–СЃР»СЏ СѓС‚СЂРёРјР°РЅРЅСЏ]
 
 FROM SalaryCalc sc
 JOIN Employee e ON sc.EmployeeID = e.EmployeeID

@@ -1,4 +1,4 @@
-DECLARE @TargetDate DATE = '2025-09-30';
+﻿DECLARE @TargetDate DATE = '2025-09-30';
 
 WITH DepartmentTree AS (
     SELECT DepartmentID, Name, ParentDepartmentID

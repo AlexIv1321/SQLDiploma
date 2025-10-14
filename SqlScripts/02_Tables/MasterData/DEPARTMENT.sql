@@ -1,4 +1,4 @@
-CREATE TABLE Department (
+﻿CREATE TABLE Department (
     DepartmentID INT NOT NULL,
 
     Name NVARCHAR(100) NOT NULL,
@@ -10,6 +10,7 @@ CREATE TABLE Department (
     BudgetID INT NULL,
 
     CreatedAt DATE NOT NULL DEFAULT GETDATE(),
+    CloseDate DATE NULL DEFAULT NULL,
     IsActive BIT NOT NULL DEFAULT 1,
 
     CONSTRAINT PK_Department PRIMARY KEY (DepartmentID),

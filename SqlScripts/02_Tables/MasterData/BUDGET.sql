@@ -1,4 +1,4 @@
-CREATE TABLE Budget (
+﻿CREATE TABLE Budget (
     BudgetID INT NOT NULL IDENTITY(1,1),
     FiscalYear INT NOT NULL,
     DepartmentCode NVARCHAR(10) NULL,

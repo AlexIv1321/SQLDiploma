@@ -1,4 +1,4 @@
-CREATE PROCEDURE CloseDepartment
+п»їCREATE PROCEDURE CloseDepartment
     @DepartmentID INT,
     @EmployeeID INT
 AS
@@ -12,21 +12,21 @@ BEGIN
             SELECT 1 FROM Department WHERE DepartmentID = @DepartmentID
         )
         BEGIN
-            THROW 60001, N'Департамент не найден.', 1;
+            THROW 60001, N'Р”РµРїР°СЂС‚Р°РјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ.', 1;
         END
 
         IF EXISTS (
             SELECT 1 FROM Department WHERE DepartmentID = @DepartmentID AND IsActive = 0
         )
         BEGIN
-            THROW 60002, N'Департамент уже закрыт.', 1;
+            THROW 60002, N'Р”РµРїР°СЂС‚Р°РјРµРЅС‚ СѓР¶Рµ Р·Р°РєСЂС‹С‚.', 1;
         END
 
         IF EXISTS (
             SELECT 1 FROM Department WHERE ParentDepartmentID = @DepartmentID AND IsActive = 1
         )
         BEGIN
-            THROW 60003, N'Нельзя закрыть департамент: есть активные дочерние отделы.', 1;
+            THROW 60003, N'РќРµР»СЊР·СЏ Р·Р°РєСЂС‹С‚СЊ РґРµРїР°СЂС‚Р°РјРµРЅС‚: РµСЃС‚СЊ Р°РєС‚РёРІРЅС‹Рµ РґРѕС‡РµСЂРЅРёРµ РѕС‚РґРµР»С‹.', 1;
         END
 
         IF EXISTS (
@@ -36,7 +36,7 @@ BEGIN
             WHERE p.DepartmentID = @DepartmentID AND e.CloseDate IS NULL
         )
         BEGIN
-            THROW 60004, N'Нельзя закрыть департамент: есть активные сотрудники.', 1;
+            THROW 60004, N'РќРµР»СЊР·СЏ Р·Р°РєСЂС‹С‚СЊ РґРµРїР°СЂС‚Р°РјРµРЅС‚: РµСЃС‚СЊ Р°РєС‚РёРІРЅС‹Рµ СЃРѕС‚СЂСѓРґРЅРёРєРё.', 1;
         END
 
         UPDATE Department

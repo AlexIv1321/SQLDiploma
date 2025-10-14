@@ -1,4 +1,4 @@
-CREATE PROCEDURE DismissEmployee
+п»їCREATE PROCEDURE DismissEmployee
     @EmployeeID INT,
     @DismissalDate DATE,
     @NewPostID INT
@@ -12,12 +12,12 @@ BEGIN
         IF @EmployeeID IS NULL OR NOT EXISTS (
             SELECT 1 FROM Employee WHERE EmployeeID = @EmployeeID
         )
-            THROW 90001, N'Працівник не знайдений.', 1;
+            THROW 90001, N'РџСЂР°С†С–РІРЅРёРє РЅРµ Р·РЅР°Р№РґРµРЅРёР№.', 1;
 
         IF @NewPostID IS NULL OR NOT EXISTS (
             SELECT 1 FROM Post WHERE PostID = @NewPostID
         )
-            THROW 90002, N'Нова посада не знайдена або неактивна.', 1;
+            THROW 90002, N'РќРѕРІР° РїРѕСЃР°РґР° РЅРµ Р·РЅР°Р№РґРµРЅР° Р°Р±Рѕ РЅРµР°РєС‚РёРІРЅР°.', 1;
 
         UPDATE EmployeePostHist
         SET AssignedTo = DATEADD(DAY, -1, @DismissalDate)

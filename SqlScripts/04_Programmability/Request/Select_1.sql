@@ -1,18 +1,18 @@
-DECLARE @CalcMonth DATE = '2025-09-01';
+п»їDECLARE @CalcMonth DATE = '2025-09-01';
 
 SELECT 
-    e.FullName AS [Найменування працівника],
-    p.Title AS [Посада],
-    d.Name AS [Департамент],
-    sc.BaseSalary AS [Оклад],
+    e.FullName AS [РќР°Р№РјРµРЅСѓРІР°РЅРЅСЏ РїСЂР°С†С–РІРЅРёРєР°],
+    p.Title AS [РџРѕСЃР°РґР°],
+    d.Name AS [Р”РµРїР°СЂС‚Р°РјРµРЅС‚],
+    sc.BaseSalary AS [РћРєР»Р°Рґ],
     
-    -- Податки як окремі стовпчики
-    SUM(CASE WHEN tc.TaxID = 1 THEN tc.TaxValue ELSE 0 END) AS [ПДФО],
-    SUM(CASE WHEN tc.TaxID = 2 THEN tc.TaxValue ELSE 0 END) AS [Військовий збір],
-    SUM(CASE WHEN tc.TaxID = 3 THEN tc.TaxValue ELSE 0 END) AS [ЄСВ],
+    -- РџРѕРґР°С‚РєРё СЏРє РѕРєСЂРµРјС– СЃС‚РѕРІРїС‡РёРєРё
+    SUM(CASE WHEN tc.TaxID = 1 THEN tc.TaxValue ELSE 0 END) AS [РџР”Р¤Рћ],
+    SUM(CASE WHEN tc.TaxID = 2 THEN tc.TaxValue ELSE 0 END) AS [Р’С–Р№СЃСЊРєРѕРІРёР№ Р·Р±С–СЂ],
+    SUM(CASE WHEN tc.TaxID = 3 THEN tc.TaxValue ELSE 0 END) AS [Р„РЎР’],
     
-    -- Сума після утримання
-    ROUND(sc.GrossSalary - SUM(tc.TaxValue), 2) AS [Сума після утримання]
+    -- РЎСѓРјР° РїС–СЃР»СЏ СѓС‚СЂРёРјР°РЅРЅСЏ
+    ROUND(sc.GrossSalary - SUM(tc.TaxValue), 2) AS [РЎСѓРјР° РїС–СЃР»СЏ СѓС‚СЂРёРјР°РЅРЅСЏ]
     
 FROM SalaryCalc sc
 JOIN Employee e ON sc.EmployeeID = e.EmployeeID

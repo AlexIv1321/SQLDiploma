@@ -1,4 +1,4 @@
-CREATE TRIGGER trg_Employee_Audit
+п»їCREATE TRIGGER trg_Employee_Audit
 ON Employee
 AFTER INSERT, UPDATE, DELETE
 AS
@@ -48,17 +48,17 @@ BEGIN
         JOIN deleted d ON i.EmployeeID = d.EmployeeID;
     END
 
-    -- Формирование сообщения
+    -- Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ
     IF @Action = 'INSERT'
-        SET @msg = CONCAT(N'Добавлен сотрудник "', @FullName, '" с датой найма ', @HireDateNew);
+        SET @msg = CONCAT(N'Р”РѕР±Р°РІР»РµРЅ СЃРѕС‚СЂСѓРґРЅРёРє "', @FullName, '" СЃ РґР°С‚РѕР№ РЅР°Р№РјР° ', @HireDateNew);
     ELSE IF @Action = 'DELETE'
-        SET @msg = CONCAT(N'Удалён сотрудник "', @FullName, '" с датой найма ', @HireDateOld);
+        SET @msg = CONCAT(N'РЈРґР°Р»С‘РЅ СЃРѕС‚СЂСѓРґРЅРёРє "', @FullName, '" СЃ РґР°С‚РѕР№ РЅР°Р№РјР° ', @HireDateOld);
     ELSE IF @Action = 'UPDATE'
-        SET @msg = CONCAT(N'Обновлён сотрудник "', @FullName,
-                          '". Старая дата найма: ', @HireDateOld,
-                          ', новая: ', @HireDateNew);
+        SET @msg = CONCAT(N'РћР±РЅРѕРІР»С‘РЅ СЃРѕС‚СЂСѓРґРЅРёРє "', @FullName,
+                          '". РЎС‚Р°СЂР°СЏ РґР°С‚Р° РЅР°Р№РјР°: ', @HireDateOld,
+                          ', РЅРѕРІР°СЏ: ', @HireDateNew);
 
-    -- Единый вызов логирования
+    -- Р•РґРёРЅС‹Р№ РІС‹Р·РѕРІ Р»РѕРіРёСЂРѕРІР°РЅРёСЏ
     IF @Action IS NOT NULL
         EXEC LogAudit @EntityName, @EntityID, @Action, @msg;
 END;

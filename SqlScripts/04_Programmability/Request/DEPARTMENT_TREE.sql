@@ -1,9 +1,9 @@
-DECLARE @TargetDate DATE = '2025-09-30';
+п»їDECLARE @TargetDate DATE = '2025-09-30';
 
 WITH DepartmentTree AS (
     SELECT DepartmentID, Name, ParentDepartmentID
     FROM Department
-    WHERE ParentDepartmentID IS NULL -- корневые
+    WHERE ParentDepartmentID IS NULL -- РєРѕСЂРЅРµРІС‹Рµ
 
     UNION ALL
 
